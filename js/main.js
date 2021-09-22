@@ -21,11 +21,11 @@ window.addEventListener("load", ()=>{
      let likeNum = 1;
      coracaoLike.addEventListener("click", ()=>{
          if (coracaoSrc == coracaoLike.src){
-             coracaoLike.src = "../img/red-heart.png";
+             coracaoLike.src = "img/red-heart.png";
              likeNum ++
              likeTxt.innerHTML = `${likeNum} likes`;
          }else{
-             coracaoLike.src = "../img/icons/heart.svg";
+             coracaoLike.src = "img/icons/heart.svg";
              likeNum --
              likeTxt.innerHTML = `${likeNum} likes`;
          }
