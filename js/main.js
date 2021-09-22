@@ -40,11 +40,11 @@ window.addEventListener("load", ()=>{
         like2.innerHTML = `${1} likes`
         img2.addEventListener("click", ()=>{
             if (imgSrc== img2.src){
-                img2.src = "../img/red-heart.png"
+                img2.src = "img/red-heart.png"
                 numLike ++;
                 like2.innerHTML = `${numLike} likes`;
             }else{
-                img2.src = "../img/icons/heart.svg"
+                img2.src = "img/icons/heart.svg"
                 numLike --;
                 like2.innerHTML = `${numLike} likes`;
             }
