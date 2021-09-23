@@ -15,42 +15,21 @@ window.addEventListener("load", ()=>{
     pesquisaBarra.addEventListener("mouseleave", ()=>{
         pesquisaBarra.style.boxShadow = ""
     })
-
-    // Imagem de like 
-     let coracaoSrc = coracaoLike.src;
-     let likeNum = 1;
-     coracaoLike.addEventListener("click", ()=>{
-         if (coracaoSrc == coracaoLike.src){
-             coracaoLike.src = "img/red-heart.png";
-             likeNum ++
-             likeTxt.innerHTML = `${likeNum} likes`;
-         }else{
-             coracaoLike.src = "img/icons/heart.svg";
-             likeNum --
-             likeTxt.innerHTML = `${likeNum} likes`;
-         }
-    })
-    
-    function like2 (cards){
-        let img2 = cards[1].querySelector(".likes img");
-        img2.src = "img/icons/heart.svg";
-        let imgSrc = img2.src;
-        let like2 = cards[1].querySelector(".likes b");
-        let numLike = 1;
-        like2.innerHTML = `${1} likes`
-        img2.addEventListener("click", ()=>{
-            if (imgSrc== img2.src){
-                img2.src = "img/red-heart.png"
-                numLike ++;
-                like2.innerHTML = `${numLike} likes`;
-            }else{
-                img2.src = "img/icons/heart.svg"
-                numLike --;
-                like2.innerHTML = `${numLike} likes`;
-            }
-        })
+    let likes = 1;
+    likeButton =(elemento)=>{
+        console.log("foi");
+        if(elemento.src.includes("img/icons/heart.svg")){
+            elemento.src = "img/red-heart.png";
+            likes = 2;
+            elemento.nextElementSibling.innerHTML = `${likes} likes`;
+        }else{
+            elemento.src = "img/icons/heart.svg";
+            likes = 1;
+            elemento.nextElementSibling.innerHTML = `${likes} likes`;
+        }
     }
 
+   
     // Fazendo o veja mais ter cursor pointer
     vejaMais.addEventListener("mouseover", ()=>{
         vejaMais.style.cssText="cursor: pointer";
@@ -58,10 +37,48 @@ window.addEventListener("load", ()=>{
     vejaMais.addEventListener("click", ()=>{
         const newPost = document.querySelector(".card").cloneNode(true);
         const mainDoc = document.querySelector("main.container.content");
-        // mainDoc.appendChild(newPost);
         mainDoc.insertBefore(newPost, vejaMais);
-        let cards= document.querySelectorAll(".card");
-        like2(cards);
+        
+        // OUTRO METODO (falho)
+        // let cards= document.querySelectorAll(".card");
+        // like2(cards);
         
     })    
 })
+
+// OUTRO METODO (falho)
+
+//  // Imagem de like 
+//  let coracaoSrc = coracaoLike.src;
+//  let likeNum = 1;
+//  coracaoLike.addEventListener("click", ()=>{
+//      if (coracaoSrc == coracaoLike.src){
+//          coracaoLike.src = "img/red-heart.png";
+//          likeNum ++
+//          likeTxt.innerHTML = `${likeNum} likes`;
+//      }else{
+//          coracaoLike.src = "img/icons/heart.svg";
+//          likeNum --
+//          likeTxt.innerHTML = `${likeNum} likes`;
+//      }
+// })
+
+// function like2 (cards){
+//     let img2 = cards[1].querySelector(".likes img");
+//     img2.src = "img/icons/heart.svg";
+//     let imgSrc = img2.src;
+//     let like2 = cards[1].querySelector(".likes b");
+//     let numLike = 1;
+//     like2.innerHTML = `${1} likes`
+//     img2.addEventListener("click", ()=>{
+//         if (imgSrc== img2.src){
+//             img2.src = "img/red-heart.png"
+//             numLike ++;
+//             like2.innerHTML = `${numLike} likes`;
+//         }else{
+//             img2.src = "img/icons/heart.svg"
+//             numLike --;
+//             like2.innerHTML = `${numLike} likes`;
+//         }
+//     })
+// }
