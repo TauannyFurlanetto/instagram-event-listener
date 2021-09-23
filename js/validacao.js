@@ -26,12 +26,12 @@ window.addEventListener("load", ()=>{
 
     // Mensagens de erro
     let errorArray = [
-        "O campo de email é invalido, preencha de novo",
-        "O nome está muito curto, precisa ser maior ou igual que três caracteres",
-        "O valor no campo de sobrenome deve ser maior que três",
-        "Nome de usuario muito pequeno, deve ser maior que 6 caracteres",
-        "A senha deve ter no minimo 8 caracteres",
-        "Insira um ano menor que 2100 e maior que 1900"
+        "O email deve ter '.', '@' e entre 6 e 180 caracteres",
+        "O nome deve ter entre 2 e 80 caracteres",
+        "O sobrenome deve ter entre 2 e 100 caracteres",
+        "O nome de usuario deve ter entre 10 e 15 caracteres",
+        "A senha deve ter entre 8 e 100 caracteres",
+        "Voce precisa ter entre 16 e 120 anos"
     ]
     
     // Clique no botao
@@ -45,7 +45,8 @@ window.addEventListener("load", ()=>{
         // Da submit no form caso tudo esteja correto
 
         // Verifica se o campo email contem o valor @
-        if(!inputEmail[0].value.includes("@")){
+        if(!inputEmail[0].value.includes("@") || !inputEmail[0].value.includes(".") 
+        || inputEmail[0].value.length>180 || inputEmail[0].value.length<10){
             // Cria o paragrafo caso ja nao haja um erro em baixo
             if (inputEmail[0].nextElementSibling.nodeName == "INPUT"){
                 let pError = document.createElement("p");
@@ -65,7 +66,7 @@ window.addEventListener("load", ()=>{
             // Define o resultado como correto caso o primeiro preenchimento for valido
             valArr[0] = 1;
         }
-        if(inputName[0].value.length<2){
+        if(inputName[0].value.length<2 || inputName[0].value.length>80){
             if (inputName[0].nextElementSibling.nodeName == "INPUT"){
                 let pError = document.createElement("p");
                 pError.innerText = errorArray[1];
@@ -81,7 +82,7 @@ window.addEventListener("load", ()=>{
         }else{
             valArr[1] = 1;
         }
-        if(inputSurname[0].value.length<3){
+        if(inputSurname[0].value.length<2 || inputSurname[0].value.length>100){
             if (inputSurname[0].nextElementSibling.nodeName == "INPUT"){
                 let pError = document.createElement("p");
                 pError.innerText = errorArray[2];
@@ -97,7 +98,7 @@ window.addEventListener("load", ()=>{
         }else{
             valArr[2] = 1;
         }
-        if(inputUsername[0].value.length<5){
+        if(inputUsername[0].value.length<10 || inputUsername[0].value.length>15){
             if (inputUsername[0].nextElementSibling.nodeName == "INPUT"){
                 let pError = document.createElement("p");
                 pError.innerText = errorArray[3];
@@ -113,7 +114,7 @@ window.addEventListener("load", ()=>{
         }else{
             valArr[3] = 1;
         }
-        if(inputPassword[0].value.length<7){
+        if(inputPassword[0].value.length<8 || inputPassword[0].value.length>100){
             if (inputPassword[0].nextElementSibling.nodeName == "INPUT"){
                 let pError = document.createElement("p");
                 pError.innerText = errorArray[4];
@@ -130,7 +131,7 @@ window.addEventListener("load", ()=>{
             valArr[4] = 1;
         }
         
-        if (parseInt(inputDate.value.split("-")[0])>2100 || parseInt(inputDate.value.split("-")[0])<1900 || inputDate.value==[""]){
+        if (parseInt(inputDate.value.split("-")[0])>2005 || parseInt(inputDate.value.split("-")[0])<1901 || inputDate.value==[""]){
             if (inputDate.nextElementSibling.nodeName == "BUTTON"){
                 let pError = document.createElement("p");
                 pError.innerText = errorArray[5];
