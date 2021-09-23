@@ -43,7 +43,8 @@ window.addEventListener("load", ()=>{
         // let cards= document.querySelectorAll(".card");
         // like2(cards);
         
-    })    
+    })  
+    
 })
 
 // OUTRO METODO (falho)
